@@ -225,6 +225,7 @@ def check_importances(name, criterion, dtype, tolerance):
                           random_state=0)
     est.fit(X, y)
     importances = est.feature_importances_
+    print(importances)
 
     # The forest estimator can detect that only the first 3 features of the
     # dataset are informative:
