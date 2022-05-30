@@ -463,7 +463,7 @@ class RANSACRegressor(
                 continue
 
             # fit model for current random sample set
-            if sample_weight is None:
+            if sample_weight is None or estimator_fit_has_sample_weight:
                 estimator.fit(X_subset, y_subset)
             else:
                 estimator.fit(
@@ -558,7 +558,7 @@ class RANSACRegressor(
                 )
 
         # estimate final model using all inliers
-        if sample_weight is None:
+        if sample_weight is None or estimator_fit_has_sample_weight:
             estimator.fit(X_inlier_best, y_inlier_best)
         else:
             estimator.fit(
